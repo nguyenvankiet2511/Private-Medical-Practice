@@ -1,0 +1,52 @@
+<!-- ======= Top Bar ======= -->
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+        <div class="align-items-center d-none d-md-flex">
+            <i class="bi bi-clock"></i> Thứ Hai - Chủ Nhật, 8:00 đến 22:00
+        </div>
+        <div class="d-flex align-items-center">
+            <i class="bi bi-phone"></i> Liên hệ với chúng tôi +84 72614451
+        </div>
+    </div>
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <a href="#hero" class="logo me-auto"> <i class="fa-solid fa-stethoscope fonttext" style="margin-right:10px;  font-size: 48px;"></i></a>
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto " href="#hero">Trang chủ</a></li>
+                <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+                <li class="dropdown"><a href="#doctors"><span>Bác sĩ</span></a>
+                <li class="dropdown"><a href="#services"><span>Chuyên khoa</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#">NỘI KHOA</a></li>
+                        <li><a href="#">NGOẠI KHOA</a></li>
+                        <li><a href="#">TAI MŨI HỌNG</a></li>
+                        <li><a href="#">DA LIỄU</a></li>
+                        <li><a href="#">SẢN PHỤ</a></li>
+                        <li><a href="#">TIÊU HÓA</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#"><span>Dịch vụ khách hàng</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="#appointment">ĐẶT LỊCH KHÁM</a></li>
+                        <li><a href="#">HƯỚNG DẪN KHÁM BỆNH</a></li>
+                        <li><a href="#">BẢNG GIÁ KHÁM BỆNH</a></li>
+                    </ul>
+                </li>
+
+                <li><a class="nav-link scrollto" href="#departments">Tin tức y tế</a></li>
+                <li><a class="nav-link scrollto" href="#doctors">Hỗ trợ khách hàng</a></li>
+
+            </ul>
+
+        </nav><!-- .navbar -->
+        <a href="#appointment" class="appointment-btn scrollto" style="text-decoration: none;"><span class="d-none d-md-inline">Đặt Lịch Hẹn</span></a>
+        <a href="{{url_for('show_login')}}" class="appointment-btn scrollto" style="text-decoration: none;"><span
+                style="font-size:20px"> Đăng Nhập</span></a>
+    </div>
+</header>
+
+

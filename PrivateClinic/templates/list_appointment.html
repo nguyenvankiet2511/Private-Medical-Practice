@@ -1,0 +1,61 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Danh sách bệnh nhân đăng ký khám</h1>
+
+    </div>
+    <table class="table datatable" id="data-table">
+        <thead>
+        <tr>
+            <td><b>Mã danh sách đăng ký</b></td>
+            <th><b>Mã bệnh nhân</b></th>
+            <th><b>Họ tên bệnh nhân</b></th>
+            <th><b>Ngày hẹn</b></th>
+            <th><b>Ngày đăng ký</b></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for l in list %}
+        <tr id="id_{{l.maDangKy}}">
+            <td id="id">{{l.maDangKy}}</td>
+            <td id="maBN">{{l.id}}</td>
+            <td id="hoTen">{{l.hoTen}}</td>
+            <td id="ngayHen">{{l.ngayHen}}</td>
+            <td id="ngayDK">{{l.ngayDK}}</td>
+            <td>
+                <div class="m-auto"><input type="button" class="btn btn-primary" value="Sửa"
+                                           onclick="editRecord('{{ l.maDangKy }}', '{{ l.hoTen }}')"/></div>
+            </td>
+            <td>
+                <div class="m-auto"><input type="button" class="btn btn-danger" value="Xóa"
+                                           onclick="deleteRecord('{{ l.maDangKy }}', '{{ l.hoTen }}')"/></div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+<script>
+    function editRecord(maDangKy, hoTen) {
+        alert('Bạn đang sửa đăng ký có mã: ' + maDangKy + ' của bệnh nhân ' + hoTen);
+          window.location.href = 'http://127.0.0.1:5000/api/update/' + maDangKy;
+
+    }
+     function deleteRecord(maDangKy, hoTen) {
+        var confirmDelete = confirm('Bạn có chắc muốn xóa đăng ký có mã: ' + maDangKy + ' của bệnh nhân ' + hoTen + '?');
+        if (confirmDelete) {
+            // Gửi yêu cầu xóa thông tin sử dụng AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('DELETE', '/api/delete/' + maDangKy, true);
+            xhr.send();
+            var row = document.getElementById('id_' + maDangKy);
+            row.parentNode.removeChild(row);
+            alert('Đã xóa đăng ký có mã: ' + maDangKy);
+        }
+    }
+</script>
+{% endblock %}

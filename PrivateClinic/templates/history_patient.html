@@ -1,0 +1,61 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <div class="row gx-5 mb-4">
+        <h5 class="d-inline-block text-primary text-center text-uppercase border-5">Lịch sử khám bệnh</h5>
+    </div>
+    <div class="container-fluid py-5">
+        <div class="container">
+            {% if benhNhan %}
+            <div class="row">
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Mã bệnh nhân:</b></label>
+                    <input type="text" class="form-control" name="maBenhNhan" value="{{ benhNhan.id }}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Họ tên bệnh nhân:</b></label>
+                    <input type="text" class="form-control" name="hoTen" value="{{ benhNhan.hoTen }}">
+                </div>
+            </div>
+            {% if phieuKham %}
+            <div class="row">
+                {% for record in phieuKham %}
+                <div style="max-width: 100%; margin-top:20px">
+                    <h5 class="d-inline-block text-primary text-uppercase text-center border-5"><b>Thông tin chi tiết
+                        phiếu
+                        khám ngày {{ record.ngayKham }}</b></h5>
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Mã phiếu khám:</b></label>
+                    <input type="text" class="form-control" name="maPhieuKham" value="{{ record.id }}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Ngày khám:</b></label>
+                    <input type="text" class="form-control" name="ngayKham" value="{{ record.ngayKham }}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Triệu chứng:</b></label>
+                    <textarea class="form-control">{{ record.trieuChung }}</textarea>
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label><b>Chuẩn đoán:</b></label>
+                    <textarea class="form-control">{{ record.chuanDoan }}</textarea>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="mt-3">
+                <div class="alert text-center alert-warning m-auto" style="width:50%;">Bệnh nhân chưa khám tại đây!
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="mt-3">
+                <div class="alert text-center alert-warning m-auto" style="width:50%;">Không có bệnh nhân tìm kiếm!
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

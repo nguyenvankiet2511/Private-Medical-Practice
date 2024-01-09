@@ -1,0 +1,94 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Lập phiếu khám</h1>
+    </div><!-- End Page Title -->
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title font-text">Phiếu thông tin</h1>
+            <form class="row g-3" method="post" action="{{url_for('save_medical_form')}}">
+                <div class="col-md-6">
+                    <label  class="form-label">Mã bệnh nhân</label>
+                    <input type="text" class="form-control" id="maBN" name="maBN">
+                </div>
+                <div class="col-md-6">
+                    <label  class="form-label">Họ và tên</label>
+                    <input type="text" class="form-control" id="tenBN" name="tenBN">
+                </div>
+                <div class="col-md-12">
+                    <label  class="form-label">Ngày khám</label>
+                    <input type="date" class="form-control" id="ngayKham" name="ngayKham">
+                </div>
+                <div class="col-md-12">
+                    <label  class="form-label">Chuẩn đoán loại bệnh</label>
+                    <input type="text" class="form-control" id="chuanDoan" name="chuanDoan">
+                </div>
+                <div class="col-md-12">
+                    <label  class="form-label">Triệu chứng</label>
+                    <input type="text" class="form-control" id="trieuChung" name="trieuChung">
+                </div>
+                <table class="table border">
+                    <thead>
+                    <tr>
+                        <th scope="col">Tên thuốc</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Cách dùng</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="width: 300px;">
+                            <div class=" border" style="border-radius: 8px;">
+                                <select id="thuoc" autocomplete="on"
+                                        style="width: 100%;height: 40px;border: none;outline: none; border-radius: 8px;">
+                                    <option value="">Không</option>
+                                    {% for m in medicine %}
+                                    <option value="{{m.id}}">{{m.tenThuoc}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" id="soLuong" style="width: 100%;height: 40px; border-radius: 8px;"
+                                   class=" form-control"
+                                   min="0" max="100">
+                        </td>
+                        <td>
+                            <textarea class="form-control" style="height:  40px" id="cachDung"></textarea>
+                        </td>
+                        <td>
+                            <div class="m-auto"><input type="button" class="btn btn-primary" onclick="add()"
+                                                       value="Thêm"/></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <h5 class="text-center">Toa thuốc</h5>
+                    <table class="table border">
+                        <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Tên thuốc</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Cách dùng</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="table">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Tạo</button>
+                    <button type="reset" class="btn btn-secondary">Xóa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

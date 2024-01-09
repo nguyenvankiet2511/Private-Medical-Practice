@@ -1,0 +1,49 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Đặt lịch khám</h1>
+
+    </div><!-- End Page Title -->
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center font-text">Phiếu đặt hẹn</h1>
+            <form class="row g-3" method="post" action="{{url_for('create_appointment')}}">
+                <div class="col-md-12">
+                    <label class="form-label">Họ và tên</label>
+                     <input name="maBN"  class="form-control" hidden="hidden" value="{{benhNhan.id}}"/>
+                    <input type="text" class="form-control" value="{{benhNhan.hoTen}}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Giới tính</label>
+                    <input type="text" class="form-control" value="{{benhNhan.gioiTinh}}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Ngày sinh</label>
+                    <input type="date" class="form-control" value="{{benhNhan.ngaySinh}}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" value="{{benhNhan.soDienThoai}}">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" value="{{benhNhan.email}}">
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" value="{{benhNhan.diaChi}} ">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Ngày hẹn</label>
+                    <input type="date" class="form-control" name="ngayHen">
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

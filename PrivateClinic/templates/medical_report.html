@@ -1,0 +1,33 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Danh sách phiếu khám</h1>
+        </div>
+        <table class="table datatable" id="data-table">
+            <thead>
+            <tr>
+                <th><b>Mã bệnh nhân</b></th>
+                <th><b>Họ tên</b></th>
+                <th><b>Ngày khám</b></th>
+                <th><b>Triệu chứng</b></th>
+                <th><b>Chuẩn đoán</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for s in phieuKham %}
+            <tr>
+                <td>{{s.id}}</td>
+                <td>{{s.hoTen}}</td>
+                <td>{{s.ngayKham}}</td>
+                <td>{{s.trieuChung}}</td>
+                <td>{{s.chuanDoan}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+</main>
+{% endblock %}
+

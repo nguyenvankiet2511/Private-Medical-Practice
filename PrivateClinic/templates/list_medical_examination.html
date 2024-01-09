@@ -1,0 +1,34 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+
+     <div class="pagetitle">
+        <h1>Danh sách khám của bạn</h1>
+
+    </div>
+    <table class="table datatable" id="data-table">
+        <thead>
+        <tr>
+            <td><b>Mã danh sách khám</b></td>
+            <th><b>Mã bệnh nhân</b></th>
+            <th><b>Ngày khám</b></th>
+            <th><b>Tên bác sĩ khám</b></th>
+            <th><b>Trạng thái</b></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for l in list %}
+        <tr>
+            <td id="id">{{l.id}}</td>
+            <td id="maBN">{{l.benhNhan_id}}</td>
+            <td id="gioiTinh">{{l.ngayKham}}</td>
+            <td id="ngaySinh">{{l.TenBacSi}}</td>
+            <td id="hoTen">{{l.is_active}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+{% endblock %}

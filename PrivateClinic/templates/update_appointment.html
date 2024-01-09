@@ -1,0 +1,42 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h1>Sửa thông tin đăng ký</h1>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center font-text">Phiếu sửa thông tin</h1>
+            <form class="row g-3" method="post" action="{{url_for('save_appointment')}}">
+                <div class="col-md-12">
+                    <label for="maDangKy">Mã danh sách đăng ký:</label>
+                    <input class="form-control" type="text" id="maDangKy"  name="maDangKy" value="{{appointment.maDangKy}}" readonly>
+                </div>
+                <div class="col-md-12">
+                    <label for="maBN">Mã bệnh nhân:</label>
+                    <input class="form-control" type="text" id="maBN" name="maBN" value="{{appointment.id}}" readonly>
+                </div>
+                <div class="col-md-12">
+                    <label for="hoTen">Họ tên bệnh nhân:</label>
+                    <input class="form-control" type="text" id="hoTen" name="hoTen" value="{{appointment.hoTen}}" readonly>
+                </div>
+                <div class="col-md-12">
+                    <label for="ngayHen">Ngày hẹn:</label>
+                    <input class="form-control" type="date" id="ngayHen" name="ngayHen" value="{{appointment.ngayHen}}">
+                </div>
+                <div class="col-md-12">
+                    <label for="ngayDK">Ngày đăng ký:</label>
+                    <input class="form-control" type="date" id="ngayDK" name="ngayDK" readonly value="{{appointment.ngayDK}}">
+                </div>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Lưu" onclick="saveRecord()"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<script>
+    function saveRecord(){
+     alert('Đã sửa thành công.');
+</script>
+{% endblock %}

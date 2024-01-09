@@ -1,0 +1,77 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <form method="post" action="{{url_for('save_list_appointment')}}">
+        <div class="pagetitle">
+            <h1>Danh sách đăng ký khám</h1>
+        </div>
+        <table class="table datatable" id="data-table">
+            <thead>
+            <tr>
+                <td><b>ID</b></td>
+                <th><b>Mã bệnh nhân</b></th>
+                <th><b>Họ tên</b></th>
+                <th><b>Giới tính</b></th>
+                <th><b>Năm sinh</b></th>
+                <th><b>Địa chỉ</b></th>
+                <th><b>Ngày hẹn</b></th>
+                <th><b></b></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for l in list %}
+            <tr>
+                <td id="id">{{l.id_ds}}</td>
+                <td id="maBN">{{l.id}}</td>
+                <td id="hoTen">{{l.hoTen}}</td>
+                <td id="gioiTinh">{{l.gioiTinh}}</td>
+                <td id="ngaySinh">{{l.ngaySinh}}</td>
+                <td id="diaChi">{{l.diaChi}}</td>
+                <td id="ngayHen">{{l.ngayHen}}</td>
+                <td>
+                    <div class="m-auto"><input type="button" class="btn btn-primary" onclick="addAppointment()"
+                                               value="Tạo"/></div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagetitle"><h1>Danh sách đã tạo</h1></div>
+        <table class="table datatable">
+            <thead>
+            <tr>
+
+                <th><b>STT</b></th>
+                <th><b>Họ tên</b></th>
+                <th><b>Giới tính</b></th>
+                <th><b>Năm sinh</b></th>
+                <th><b>Địa chỉ</b></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="table">
+            <div class="col-md-3">
+                <label class="form-label"><b>Chọn ngày khám</b></label>
+                <input name="ngayKham" type="date" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label"><b>Chọn bác sĩ</b></label>
+                <div class=" border" style="border-radius: 8px;">
+                    <select id="doctor" name="doctor" autocomplete="on"
+                            style="width: 100%;height: 40px;border: none;outline: none; border-radius: 8px;">
+                        <option value="">Mời chọn bác sĩ</option>
+                        {% for d in doctor %}
+                        <option value="{{d.id}}">{{d.hoTen}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Lập danh sách</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

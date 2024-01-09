@@ -1,0 +1,196 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+     {{ super() }}
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="{{url_for('static', filename='css/display.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<section class="section">
+     <div class="pagetitle" style="text-align: center;">
+        <h1>Thống Kê - Báo Cáo </h1>
+    </div>
+    <div class="search-container">
+        <div>Chọn tháng năm:</div>
+        <form method="post" action="{{ url_for('statsview.index') }}">
+            <input name="rel" class="search-input" type="month">
+            <button class="search-button" type="submit">Thống kê</button>
+        </form>
+    </div>
+    <div class="row">
+         <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tần suất khám năm {{year}}</h5>
+                    <canvas id="tanSuat" style="max-height: 400px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Doanh thu theo tháng năm {{year}}</h5>
+                    <canvas id="expenseChart" style="max-height: 400px;"></canvas>
+                </div>
+            </div>
+        </div>
+         <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tần suất thuốc sử dụng trong tháng {{month}} năm {{year}}</h5>
+                    <canvas id="thuoc" style="max-height: 400px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Doanh thu theo quý năm {{year}}</h5>
+                    <canvas id="quy" style="max-height: 400px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+   console.log('File 1 - DOM đã được tải xong.');
+    var ctx1 = document.getElementById('tanSuat').getContext('2d');
+    var ctx = document.getElementById('expenseChart').getContext('2d');
+    var ctx2 = document.getElementById('quy').getContext('2d');
+    var ctx3 = document.getElementById('thuoc').getContext('2d');
+
+
+
+    var tan_suat_kham={{ tan_suat_kham | tojson | safe }};
+    var result={{ result | tojson | safe }};
+    var quy={{ quy | tojson | safe }};
+    var thuoc={{ thuoc | tojson | safe }};
+    var sl={{ sl | tojson | safe }};
+
+
+function getRandomColor() {
+    var r = Math.floor(Math.random() * 256); // Giá trị màu đỏ (0-255)
+    var g = Math.floor(Math.random() * 256); // Giá trị màu xanh lá cây (0-255)
+    var b = Math.floor(Math.random() * 256); // Giá trị màu xanh dương (0-255)
+    var a = 0.5; // Giá trị alpha mặc định
+
+    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + a + ')';
+}
+
+// Tạo mảng chứa màu ngẫu nhiên cho từng tháng
+var backgroundColors = [];
+for (var i = 0; i < 12; i++) {
+    backgroundColors.push(getRandomColor());
+}
+
+var mauThuoc=[];
+for (var i = 0; i < Object.keys(thuoc).length; i++) {
+    mauThuoc.push(getRandomColor());
+}
+
+    var expenseChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels:['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh thu',
+                data: result,
+                backgroundColor: backgroundColors,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var expenseChart = new Chart(ctx3, {
+        type: 'polarArea',
+        data: {
+            labels: thuoc,
+            datasets: [{
+                label: 'Tần suất sử dụng',
+                data: sl,
+                backgroundColor: mauThuoc,
+                borderColor: mauThuoc,
+
+            }]
+        },
+
+    });
+    var expenseChart = new Chart(ctx2, {
+        type: 'polarArea',
+        data: {
+            labels:['Quý 1', 'Quý 2','Quý 3','Quý 4'],
+            datasets: [{
+                label: 'Doanh thu',
+                data: quy,
+                backgroundColor:[
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)'],
+                borderColor:[
+                      'rgba(75, 192, 192)',
+                      'rgb(255, 159, 64)',
+                      'rgb(255, 205, 86)',
+                      'rgb(75, 192, 192)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+     var expenseChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Số lượng khám',
+                data: tan_suat_kham,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                 tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
+
+</script>
+{% endblock %}

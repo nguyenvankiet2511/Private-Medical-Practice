@@ -1,0 +1,103 @@
+{% extends 'layout/base_main.html' %}
+{% block content %}
+<main id="main" class="main">
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5 mb-4">
+                <h5 class="d-inline-block text-primary text-center text-uppercase border-5">Thanh Toán</h5>
+            </div>
+            <div class="mx-auto">
+                <form action="{{ url_for('create_payment') }}" method="post">
+                    <div class="row g-3 align-items-center justify-content-center">
+                        <div class="col-auto">
+                            <label class="col-form-label">Mã phiếu khám:</label>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <input type="text" name="maPK" class="form-control bg-light border-0"
+                                   placeholder="Nhập mã phiếu khám"
+                                   style="height: 55px;">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary" style="width:120px; height: 55px;">Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if is_none == False %}
+    <div class="mt-3">
+        <div class="alert text-center alert-warning m-auto" style="width:50%;">Phiếu khám này đã thanh toán.</div>
+    </div>
+    {% elif phieu and is_none == True %}
+    <form action="{{url_for('create_invoce')}}" method="post">
+        <div class="mt-5">
+            <div class="row">
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label>Mã phiếu khám:</label>
+                    <input type="text" id="maPK" class="form-control" readonly name="maPK" value="{{phieu.id}}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label>Ngày khám:</label>
+                    <input type="date" class="form-control" id="ngayKham" readonly name="ngayKham"
+                           value="{{phieu.ngayKham}}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label for="name">Mã bệnh nhân:</label>
+                    <input type="text" class="form-control" readonly name="hoTen" id="name"
+                           value="{{phieu.benh_nhan_id}}">
+                </div>
+                <div class="form-group mt-2 col-md-6 col-sm-12">
+                    <label for="name">Tên bệnh nhân:</label>
+                    <input type="text" class="form-control" readonly name="hoTen" value="{{phieu.hoTen}}">
+                </div>
+            </div>
+            <div class="mt-5">
+                <table class="table border">
+                    <thead>
+                    <tr>
+                        <th scope="col">Tên thuốc</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Giá bán</th>
+                        <th scope="col">Thành tiền</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="table">
+                    {% for t in thuoc %}
+                    <tr>
+                        <td>{{t.tenThuoc}}</td>
+                        <td>{{t.soLuong}}</td>
+                        <td>{{t.gia}} VND</td>
+                        <td>{{t.soLuong * t.gia}} VND</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="mt-3">
+            <div id="tienThuoc"><b>Tổng tiền thuốc:</b> {{ tienThuoc }} VND</div>
+        </div>
+        <div class="mt-3">
+            <div id="tienKham"><b>Tiền khám: </b> {{ tienKham.giaTri|float }} VND</div>
+        </div>
+        <div class="mt-3">
+            <div><b>Tổng tiền thanh toán: </b> {{ tienKham.giaTri + tienThuoc }} VND</div>
+        </div>
+         <input type="hidden" name="tienKham" value="{{ tienKham.giaTri }}">
+          <input type="hidden" name="tienThuoc" value="{{ tienThuoc }}">
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger" name="action" value="in_hoa_don">In hóa đơn</button>
+            <button type="submit" class="btn btn-danger" name="action" value="thanh_toan">Thanh toán</button>
+        </div>
+    </form>
+    {% else %}
+    <div class="mt-3">
+        <div class="alert text-center alert-warning m-auto" style="width:50%;">Phiếu khám này không tồn tại</div>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}

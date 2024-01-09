@@ -1,0 +1,246 @@
+<header class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <a style="text-decoration: none;" class="logo d-flex align-items-center">
+            <i class="fa-solid fa-stethoscope fonttext" style="margin-right:10px"></i>
+            <span class="d-none d-lg-block">NWA</span>
+        </a>
+        <i class="fa-solid fa-bars toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge bg-primary badge-number">4</span>
+                </a><!-- End Notification Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header">
+                        You have 4 new notifications
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-exclamation-circle text-warning"></i>
+                        <div>
+                            <h4>Lorem Ipsum</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>30 min. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <div>
+                            <h4>Atque rerum nesciunt</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>1 hr. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <div>
+                            <h4>Sit rerum fuga</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>2 hrs. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <div>
+                            <h4>Dicta reprehenderit</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>4 hrs. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-footer">
+                        <a href="#">Show all notifications</a>
+                    </li>
+
+                </ul><!-- End Notification Dropdown Items -->
+
+            </li><!-- End Notification Nav -->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="fa-brands fa-rocketchat"></i>
+                    <span class="badge bg-success badge-number">3</span>
+                </a><!-- End Messages Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    <li class="dropdown-header">
+                        You have 3 new messages
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Maria Hudson</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Anna Nelson</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>6 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>David Muldon</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>8 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="dropdown-footer">
+                        <a href="#">Show all messages</a>
+                    </li>
+
+                </ul><!-- End Messages Dropdown Items -->
+
+            </li><!-- End Messages Nav -->
+
+            <li class="nav-item dropdown pe-3">
+
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">Tiện ích</span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>Tiện ích</h6>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{{url_for('view_profile')}}">
+                            <i class="bi bi-person"></i>
+                            <span>Hồ sơ của tôi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{{url_for('view_profile')}}">
+                            <i class="bi bi-gear"></i>
+                            <span>Chỉnh sửa hồ sơ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{{url_for('user_logout')}}">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('view_about')}}"><span>Trang chủ</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        {% if current_user.is_authenticated and session['roles'] == 'UserRole.PATIENT' %}
+        <li class="nav-item"><a href="{{ url_for('appointment_book') }}" class="nav-link collapsed"><span>Đặt lịch khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('history_medical_patient')}}"><span>Lịch sử khám bệnh</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('support_patient')}}"><span>Hỗ trợ khách hàng</span></a></li>
+        {% elif current_user.is_authenticated and session['roles'] == 'UserRole.NURSE' %}
+        <li class="nav-item"><a href="{{ url_for('create_list_appoint') }}" class="nav-link collapsed"><span>Lập danh sách khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('list_medical_examiniation')}}"><span>Quản lý danh sách khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('list_appointment')}}"><span>Xem danh sách đăng ký</span></a></li>
+        {% elif current_user.is_authenticated and session['roles'] == 'UserRole.DOCTOR' %}
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('list_medical_examiniation')}}"><span>Xem danh sách khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a href="{{ url_for('create_medicalform') }}" class="nav-link collapsed"><span>Lập phiếu khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{ url_for('medical_report_all') }}"><span>Quản lý phiếu khám</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('history_medical_report')}}"><span>Xem lịch sử bệnh nhân</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('view_medicine')}}"><span>Xem danh sách thuốc</span></a></li>
+        {% elif current_user.is_authenticated and session['roles'] == 'UserRole.EMPLOYEE' %}
+        <li class="nav-item"><a href="{{ url_for('create_payment') }}" class="nav-link collapsed"><span>Thanh toán hóa đơn</span></a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('list_invoice')}}"><span>Quản lý danh sách hóa đơn</span></a></li>
+        {% endif %}
+        <li><hr class="dropdown-divider"></li>
+        <li class="nav-item"><a class="nav-link collapsed" href="{{url_for('view_profile')}}"><span>Thông tin cá nhân</span></a></li>
+    </ul>
+</aside>

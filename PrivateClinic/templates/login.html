@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="shortcut icon"
+          href="https://img.freepik.com/free-vector/hospital-logo-design-vector-medical-cross_53876-136743.jpg?size=338&ext=jpg&ga=GA1.1.1546980028.1703116800&semt=ais"
+          type="image/img">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Phòng khám mạch tư</title>
+</head>
+<body>
+<div class="loading">
+    <img src=" {{url_for('static', filename='image/load1.gif')}}" alt="loading..."/>
+</div>
+<div class="wrapper">
+    <!-- Left -->
+    <div class="left col"></div>
+
+    <!-- Right -->
+    <div class="right col">
+        <!-- Sign in -->
+        <div id="signIn" class="container active">
+            <div class="img-logo">
+                <img src="{{url_for('static', filename='image/hinh6.png')}}" alt="Logo"/>
+            </div>
+            <h4>Đăng nhập</h4>
+            <form class="signIn-form" action="{{ url_for('user_login')}}" method="post">
+                <div class="signIn-items">
+                    <div>
+                        <label for="signIn-email">Tên tài khoản:</label>
+                        <div class="item">
+                            <label for="signIn-email">
+                                <i class="fa-solid fa-user"></i>
+                            </label>
+                            <input id="signIn-email" name="username" type="text" placeholder="Tên tài khoản"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="signIn-password">Mật khẩu:</label>
+                        <div class="item">
+                            <label for="signIn-password">
+                                <i class="fa-solid fa-key"></i>
+                            </label>
+                            <input id="signIn-password" name="password" type="password" placeholder="Mật khẩu"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-btn">
+                    <button type="submit"><span>ĐĂNG NHẬP</span></button>
+                </div>
+
+                <div class="last-question">
+                    <div class="question">Bạn chưa có tài khoản?</div>
+                    <span>Đăng ký</span>
+                </div>
+            </form>
+        </div>
+        <!-- Sign up -->
+        <div id="signUp" class="container">
+            <h4>Đăng ký tài khoản mới</h4>
+            <h6>Vui lòng điền các thông tin sau!</h6>
+            <form class="signUp-form" method="post" action="{{url_for('create_account_patient')}}">
+                <div class="signUp-items">
+                    <div class="item" style="margin-top:-10px">
+                        <label for="signUp-name"><i class="fa-solid fa-user"></i></label>
+                        <input id="signUp-name" name="hoTen" type="text" placeholder="Tên"/>
+                    </div>
+                    <div class="item" style="margin-top:-10px">
+                        <label for="signUp-name">
+                            <i class="fa-solid fa-user"></i>
+                        </label>
+                        <input name="gioiTinh" type="text" placeholder="Giới tính"/>
+                    </div>
+                    <div class="item " style="margin-top:-10px">
+                        <label for="signUp-name">
+                            <i class="fa-solid fa-cake-candles"></i>
+                        </label>
+                        <input type="date" name="ngaySinh" placeholder="ngaySinh"/>
+                    </div>
+                    <div class="item" style="margin-top:-10px">
+                        <label for="signUp-email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </label>
+                        <input id="signUp-email" name="email" type="email" placeholder="Email"/>
+                    </div>
+                    <div class="item" style="margin-top:-10px">
+                        <label for="signUp-tel">
+                            <i class="fa-solid fa-phone"></i>
+                        </label>
+                        <input id="signUp-tel" type="tel" name="soDienThoai" placeholder="Số điện thoại"/>
+                    </div>
+                    <div class="item" style="margin-top:-10px">
+                        <label for="signUp-career">
+                            <i class="fa-solid fa-clipboard"></i>
+                        </label>
+                        <input id="signUp-career" name="diaChi" type="text" placeholder="Địa chỉ"/>
+                    </div>
+                    <div class="signUp-items">
+                        <div class="item" style="margin-top:-10px">
+                            <label for="signUp-name">
+                                <i class="fa-solid fa-user"></i>
+                            </label>
+                            <input name="username" type="text" placeholder="Tên đăng nhập"/>
+                        </div>
+                        <div class="item" style="margin-top:-10px">
+                            <label for="signUp-password">
+                                <i class="fa-solid fa-key"></i>
+                            </label>
+                            <input id="signUp-password" name="password" type="password" placeholder="Mật khẩu"/>
+                        </div>
+                        <div class="main-btn" style="margin-top:-5px">
+                            <button type="submit"><span>ĐĂNG KÝ</span></button>
+
+                        </div>
+                        <div class="last-question" style="margin-top:-5px">
+                            <div class="question">Đã có tài khoản?</div>
+                            <span>Đăng nhập</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Forgot password -->
+        <div id="forgot-pw" class="container">
+            <div class="img-logo">
+                <img src="/static/image/hinh6.png" alt="Logo"/>
+            </div>
+            <h4>Quên mật khẩu</h4>
+            <h6>Điền email của bạn đã đăng ký!</h6>
+            <form class="forgot-form">
+                <div class="forgot-items">
+                    <div>
+                        <label for="forgot-email">Email:</label>
+                        <div class="item">
+                            <label for="">
+                                <i class="fa-solid fa-envelope"></i>
+                            </label>
+                            <input id="forgot-email" type="email" placeholder="Email"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-btn">
+                    <span>Đặt lại mật khẩu</span>
+                </div>
+                <div class="last-question">
+                    <div>
+                        <div class="question">Bạn đã có tài khoản?</div>
+                        <span>Đăng nhập</span>
+                    </div>
+                    <div>
+                        <div class="question">Bạn chưa có tài khoản?</div>
+                        <span href="">Đăng ký</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>
